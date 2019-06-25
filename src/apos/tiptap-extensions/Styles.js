@@ -13,10 +13,10 @@ export default class Styles extends Node {
     return {
       attrs: {
         tag: {
-          default: 'p'
+          default: this.relevantStyles()[0].tag
         },
         class: {
-          default: null
+          default: this.relevantStyles()[0].class || null
         }
       },
       content: 'inline*',
@@ -24,7 +24,7 @@ export default class Styles extends Node {
       defining: true,
       draggable: false,
 
-      parseDOM: (this.options.styles || []).map(style => {
+      parseDOM: (this.relevantStyles()).map(style => {
         return {
           tag: style.class ? `${style.tag}[class="${style.class}"]` : `${style.tag}:not([class])`,
           attrs: {
@@ -35,10 +35,11 @@ export default class Styles extends Node {
       }),
 
       toDOM: node => {
-        const attrs = {};
-        if (node.attrs.class) {
-          attrs.class = node.attrs.class;
-        }
+        const attrs = {
+          class: node.attrs.class || null
+        };
+        console.log([ node.attrs.tag, attrs, 0 ]);
+
         return [ node.attrs.tag, attrs, 0 ];
       }
 
@@ -47,14 +48,16 @@ export default class Styles extends Node {
 
   commands({ type, schema }) {
     return attrs => {
-      if (attrs.tag === 'p') {
-        type = schema.nodes.paragraph;
-      }
-      return setBlockType(type, {
-        class: null,
-        ...attrs
-      });
+      attrs = {
+        tag: attrs.tag,
+        class: attrs.class || null
+      };
+      return setBlockType(type, attrs);
     };
+  }
+
+  relevantStyles() {
+    return (this.options.styles || []).filter(style => (style.tag !== 'p'));
   }
 
   // keys({ type }) {

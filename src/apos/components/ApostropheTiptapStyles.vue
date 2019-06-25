@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <select :value="active()" @change="style">
-      <option v-for="style, i in options.styles" :value="i">{{ style.label }}</option>
-    </select>
-  </div>
+  <select :value="active()" @change="style">
+    <option v-for="style, i in options.styles" :value="i">{{ style.label }}</option>
+  </select>
 </template>
 
 <script>
@@ -22,19 +20,33 @@ export default {
       for (let i = 0; (i < styles.length); i++) {
         const style = styles[i];
         const attrs = {
-          tag: style.tag,
-          class: style.class || null
+          class: style.class || null,
         };
-        if (this.editor.isActive.styles(attrs)) {
-          return i;
+        if (style.tag === 'p') {
+          if (this.editor.isActive.paragraph(attrs)) {
+            return i;
+          }
+        } else {
+          attrs.tag = style.tag;
+          if (this.editor.isActive.styles(attrs)) {
+            return i;
+          }
         }
       }
+      console.log('no match');
       return 0;
     },
     style($event) {
-      const style = this.options.styles[$event.target.value];
-
-      this.editor.commands.styles(style);
+      let style = this.options.styles[$event.target.value];
+      const attrs = {
+        class: style.class || null
+      };
+      if (style.tag === 'p') {
+        this.editor.commands.paragraph(attrs);
+      } else {
+        attrs.tag = style.tag;
+        this.editor.commands.styles(attrs);
+      }
     }
   }
 };

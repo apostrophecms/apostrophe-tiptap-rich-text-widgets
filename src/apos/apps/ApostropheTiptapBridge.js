@@ -1,20 +1,15 @@
 import Vue from 'apostrophe/vue';
 
 export default function() {
-  apos.on('tiptapStart', function(aposEditor) {
-    console.log(arguments);
-    console.log('options:');
-    console.log(aposEditor.options);
+  apos.on('tiptapStart', function(aposEditor, options) {
     const type = aposEditor.$widget.attr('data-apos-widget');
-    console.log('MODULE options:');
-    console.log(apos.areas.getWidgetManager(type).options);
     const widgetEditorComponentType = apos.areas.getWidgetManager(type).options.components.widgetEditor;
-    console.log(widgetEditorComponentType);
+    console.log('Initial content: ' + options.content);
     aposEditor.tiptapApp = new Vue({
       el: aposEditor.$richText[0],
       data: {
         value: {
-          content: aposEditor.$richText.html()
+          content: options.content
         },
         options: aposEditor.options,
         $original: aposEditor.$richText.clone(),

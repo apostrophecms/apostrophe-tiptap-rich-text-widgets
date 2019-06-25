@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { Doc, Text } from 'tiptap';
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap';
 import {
   HardBreak,
@@ -67,7 +68,6 @@ function toolbarCompatibility(toolbar) {
     seen[item] = true;
     return true;
   });
-  console.log(toolbar);
   return toolbar;
 }
 
@@ -101,6 +101,8 @@ export default {
       toolbar: toolbarCompatibility(this.options.toolbar),
       editor: new Editor({
         extensions: [
+          new Doc(),
+          new Text(),
           new BulletList(),
           new HardBreak(),
           new ListItem(),
@@ -115,13 +117,16 @@ export default {
         ].concat((apos.tiptapExtensions || []).map(C => new C(this.options))),
         autoFocus: true,
         onUpdate: this.update,
-        content: this.value.content
+        content: this.value.content,
+        useBuiltInExtensions: false
       }),
       widgetInfo: {
         data: this.value,
         hasErrors: false,
       }
     };
+    console.log('content is: ' + this.value.content);
+    result.editor.setContent(this.value.content);
     return result;
   },
   beforeDestroy() {
