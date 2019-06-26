@@ -32,9 +32,9 @@ export default class Paragraph extends Node {
         const attrs = {
           class: node.attrs.class || null
         };
-        console.log([ node.attrs.tag, attrs, 0 ]);
+        console.log([ 'p', attrs, 0 ]);
 
-        return [ node.attrs.tag, attrs, 0 ];
+        return [ 'p', attrs, 0 ];
       }
     }
   }
