@@ -1,5 +1,6 @@
 <template>
   <select :value="active()" @change="style">
+    <option value="">----</option>
     <option v-for="style, i in options.styles" :value="i">{{ style.label }}</option>
   </select>
 </template>
@@ -33,11 +34,14 @@ export default {
           }
         }
       }
-      console.log('no match');
-      return 0;
+      return -1;
     },
     style($event) {
       let style = this.options.styles[$event.target.value];
+      if (!style) {
+        // None selected, no action
+        return;
+      }
       const attrs = {
         class: style.class || null
       };

@@ -20,7 +20,6 @@ export default class Paragraph extends Node {
       group: 'block',
       draggable: false,
       parseDOM: this.relevantStyles().map(style => {
-        console.log('PARA parseDom: ', JSON.stringify(style));
         return {
           tag: style.class ? `p[class="${style.class}"]` : `p:not([class])`,
           attrs: {
@@ -32,7 +31,6 @@ export default class Paragraph extends Node {
         const attrs = {
           class: node.attrs.class || null
         };
-        console.log([ 'p', attrs, 0 ]);
 
         return [ 'p', attrs, 0 ];
       }
@@ -41,7 +39,6 @@ export default class Paragraph extends Node {
 
   commands({ type, schema }) {
     return attrs => {
-      console.log('IN COMMAND, ', attrs);
       attrs = {
         class: attrs.class || null
       };

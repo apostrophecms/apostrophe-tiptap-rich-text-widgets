@@ -32,6 +32,12 @@ import {
   HorizontalRule
 } from 'tiptap-extensions';
 
+// Must be added early as extensions for core tags are very
+// order dependent. TODO: a way for regular tiptap extensions
+// delivered in other modules to participate in the ordering
+// process. Right now those all go at the end
+import Paragraph from '../tiptap-extensions/special/Paragraph';
+
 // Here because we cannot access computed inside data
 
 function moduleOptionsBody(type) {
@@ -103,6 +109,7 @@ export default {
         extensions: [
           new Doc(),
           new Text(),
+          new Paragraph(),
           new BulletList(),
           new HardBreak(),
           new ListItem(),
@@ -125,7 +132,6 @@ export default {
         hasErrors: false,
       }
     };
-    console.log('content is: ' + this.value.content);
     result.editor.setContent(this.value.content);
     return result;
   },

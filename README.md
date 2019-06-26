@@ -7,7 +7,7 @@ You must use Node 8 or better.
 ```
 # First, cd to the root of your existing Apostrophe 2.x project
 
-npm install apostrophe-tiptap-rich-text-editor-widgets
+npm install apostrophe-tiptap-rich-text-widgets
 ```
 
 ## Configuration
@@ -16,7 +16,7 @@ npm install apostrophe-tiptap-rich-text-editor-widgets
 // in app.js
 require('apostrophe')({
   modules: {
-    'apostrophe-tiptap-rich-text-editor-widgets': {}
+    'apostrophe-tiptap-rich-text-widgets': {}
   }
 });
 ```
@@ -30,7 +30,7 @@ All rich text editor widgets on the site now use [tiptap](https://tiptap.scrumpy
 require('apostrophe')({
   pushVue: false,
   modules: {
-    'apostrophe-tiptap-rich-text-editor-widgets': {}
+    'apostrophe-tiptap-rich-text-widgets': {}
   }
 });
 ```

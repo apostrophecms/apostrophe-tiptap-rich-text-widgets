@@ -139,14 +139,14 @@ ${appImports.invokeCode}
         },
         resolveLoader: {
           extensions: ['*', '.js', '.vue', '.json'],
-          modules: [ 'node_modules/apostrophe-tiptap-rich-text-editor-widgets/node_modules', 'node_modules' ]
+          modules: [ 'node_modules/apostrophe-tiptap-rich-text-widgets/node_modules', 'node_modules' ]
         },
         resolve: {
           extensions: ['*', '.js', '.vue', '.json'],
           alias: {
             'apostrophe/vue$': 'vue/dist/vue.esm.js'
           },
-          modules: [ 'node_modules/apostrophe-tiptap-rich-text-editor-widgets/node_modules', 'node_modules' ]
+          modules: [ 'node_modules/apostrophe-tiptap-rich-text-widgets/node_modules', 'node_modules' ]
         },
         stats: 'verbose',
         module: {

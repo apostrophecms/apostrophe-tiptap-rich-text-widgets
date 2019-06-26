@@ -4,7 +4,6 @@ export default function() {
   apos.on('tiptapStart', function(aposEditor, options) {
     const type = aposEditor.$widget.attr('data-apos-widget');
     const widgetEditorComponentType = apos.areas.getWidgetManager(type).options.components.widgetEditor;
-    console.log('Initial content: ' + options.content);
     aposEditor.tiptapApp = new Vue({
       el: aposEditor.$richText[0],
       data: {

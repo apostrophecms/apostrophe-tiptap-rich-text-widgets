@@ -38,7 +38,6 @@ export default class Styles extends Node {
         const attrs = {
           class: node.attrs.class || null
         };
-        console.log([ node.attrs.tag, attrs, 0 ]);
 
         return [ node.attrs.tag, attrs, 0 ];
       }
