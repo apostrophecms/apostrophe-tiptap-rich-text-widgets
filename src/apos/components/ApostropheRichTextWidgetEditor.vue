@@ -29,7 +29,11 @@ import {
   Strike,
   Blockquote,
   CodeBlock,
-  HorizontalRule
+  HorizontalRule,
+  Table,
+  TableHeader,
+  TableCell,
+  TableRow
 } from 'tiptap-extensions';
 
 // Must be added early as extensions for core tags are very
@@ -58,7 +62,8 @@ function toolbarCompatibility(toolbar) {
     'HorizontalRule': 'horizontal_rule',
     'Redo': 'redo',
     'Undo': 'undo',
-    'Strikethrough': 'strike'
+    'Strikethrough': 'strike',
+    'Table': 'table'
   };
   toolbar = toolbar.map(item => {
     if (ckeditorCompatible[item]) {
@@ -120,7 +125,11 @@ export default {
           new Strike(),
           new Blockquote(),
           new CodeBlock(),
-          new HorizontalRule()
+          new HorizontalRule(),
+          new Table(),
+          new TableHeader(),
+          new TableCell(),
+          new TableRow()
         ].concat((apos.tiptapExtensions || []).map(C => new C(this.options))),
         autoFocus: true,
         onUpdate: this.update,

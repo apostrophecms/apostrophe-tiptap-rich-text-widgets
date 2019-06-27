@@ -62,6 +62,23 @@ module.exports = {
       'redo': {
         component: 'ApostropheTiptapButton',
         label: 'Redo'
+      },
+      'table': {
+        component: 'ApostropheTiptapTable',
+        // createTable is always allowed when this component is present in the toolbar,
+        // these are the actions allowed on an existing table
+        actions: [ 'deleteTable', 'addColumnBefore', 'addColumnAfter', 'deleteColumn', 'addRowBefore', 'addRowAfter', 'deleteRow', 'toggleCellMerge' ],
+        labels: {
+          createTable: 'Create Table',
+          deleteTable: 'Delete Table',
+          addColumnBefore: 'Add Column Before',
+          addColumnAfter: 'Add Column After',
+          deleteColumn: 'Delete Column',
+          addRowBefore: 'Add Row Before',
+          addRowAfter: 'Add Row After',
+          deleteRow: 'Delete Row',
+          toggleCellMerge: 'Merge Cells'
+        }
       }
     }
   },
