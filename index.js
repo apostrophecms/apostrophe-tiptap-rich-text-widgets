@@ -2,6 +2,8 @@
 // the rich text editor does not use a modal; instead you edit in context
 // on the page.
 
+const fs = require('fs-extra');
+
 module.exports = {
   improve: 'apostrophe-rich-text-widgets',
 
@@ -77,11 +79,13 @@ module.exports = {
 
     const superPushAssets = self.pushAssets;
     self.pushAssets = function() {
-      self.pushAsset('script', 'bundle', { when: 'user' });
+      // If project level bundle exists, push that instead.
+      // The default push-both behavior would be problematic here
+      self.pushAsset('script', fs.existsSync(self.apos.rootDir + '/lib/modules/apostrophe-rich-text-widgets/public/js/project-tiptap-bundle.js') ? 'project-tiptap-bundle' : 'tiptap-bundle', { when: 'user' });
       superPushAssets();
     };
 
-    self.addTask('build', 'Build the bundle.js asset bundle that powers this module on the front end', async function(apos, argv) {
+    self.addTask('build', 'Build the tiptap-bundle.js asset bundle that powers this module on the front end', async function(apos, argv) {
 
       // This is a cut-down version of the webpack build used for all
       // 3.x assets as of July 24th, 2019. It supports finding stuff
@@ -90,7 +94,6 @@ module.exports = {
       // 2.x Vue-based backports to cooperate on this. -Tom
 
       const glob = require('glob');
-      const fs = require('fs-extra');
       const VueLoaderPlugin = require('vue-loader/lib/plugin');
       const webpackModule = require('webpack');
 
@@ -106,7 +109,8 @@ module.exports = {
         });
       }
 
-      const buildDir = __dirname + '/build';
+      const buildDir = apos.rootDir + '/data/temp/tiptap-build';
+      fs.mkdirpSync(buildDir);
       // Don't clutter up with previous builds.
       await fs.remove(buildDir);
       await fs.mkdir(buildDir);
@@ -127,6 +131,12 @@ ${appImports.invokeCode}
 });
 `
       );
+      const outputDir = argv.npm ? (__dirname + '/public/js') : (apos.rootDir + '/lib/modules/apostrophe-rich-text-widgets/public/js');
+      const moduleNpmDir = __dirname + '/node_modules';
+      const projectNpmDir = apos.rootDir + '/node_modules';
+      console.log('moduleNpmDir: ' + moduleNpmDir);
+      console.log('projectNpmDir: ' + projectNpmDir);
+      fs.mkdirpSync(outputDir);
       await require('util').promisify(webpack)({
         entry: importFile,
         mode: 'development',
@@ -134,19 +144,19 @@ ${appImports.invokeCode}
           minimize: false
         },
         output: {
-          path: __dirname + '/public/js',
-          filename: 'bundle.js'
+          path: outputDir,
+          filename: argv.npm ? 'tiptap-bundle.js' : 'project-tiptap-bundle.js'
         },
         resolveLoader: {
           extensions: ['*', '.js', '.vue', '.json'],
-          modules: [ 'node_modules/apostrophe-tiptap-rich-text-widgets/node_modules', 'node_modules' ]
+          modules: argv.npm ? [ moduleNpmDir ] : [ moduleNpmDir, projectNpmDir ]
         },
         resolve: {
           extensions: ['*', '.js', '.vue', '.json'],
           alias: {
             'apostrophe/vue$': 'vue/dist/vue.esm.js'
           },
-          modules: [ 'node_modules/apostrophe-tiptap-rich-text-widgets/node_modules', 'node_modules' ]
+          modules: argv.npm ? [ moduleNpmDir ] : [ moduleNpmDir, projectNpmDir ]
         },
         stats: 'verbose',
         module: {
@@ -192,6 +202,9 @@ ${appImports.invokeCode}
         // Allow project level to participate
         self.__meta.chain.forEach(function(entry) {
           if (seen[entry.dirname]) {
+            return;
+          }
+          if (argv.npm && (!entry.dirname.match(/node_modules/))) {
             return;
           }
           components = components.concat(glob.sync(`${entry.dirname}/src/apos/${folder}/${pattern}`));
