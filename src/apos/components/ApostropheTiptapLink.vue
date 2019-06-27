@@ -1,15 +1,15 @@
 <template>
   <div class="apostrophe-tiptap-link-control">
-    <button @click="click()">
+    <button @click="click()" :class="{ 'apos-active': active() }">
       {{ tool.label }}
     </button>
-    <ApostropheModal v-if="active">
+    <ApostropheModal v-if="editing">
       <template slot="header">
         <!-- TODO i18n -->
         <p>Link</p>
       </template>
       <template slot="body">
-        <form v-if="active">
+        <form v-if="editing">
           <fieldset>
             <label for="href">URL</label><input v-model="href" />
           </fieldset>
@@ -53,13 +53,13 @@ export default {
       href: '',
       id: '',
       target: '',
-      active: false
+      editing: false
     };
   },
   methods: {
     click() {
-      this.active = !this.active;
-      if (this.active) {
+      this.editing = !this.editing;
+      if (this.editing) {
         const values = this.editor.getMarkAttrs('link');
         this.href = values.href;
         this.id = values.id;
@@ -67,7 +67,7 @@ export default {
       }
     },
     close() {
-      this.active = false;
+      this.editing = false;
       this.editor.focus();
     },
     save() {
@@ -76,7 +76,10 @@ export default {
         id: this.id,
         target: this.target
       });
-      this.active = false;
+      this.editing = false;
+    },
+    active() {
+      return this.editor.isActive.link();
     }
   }
 };

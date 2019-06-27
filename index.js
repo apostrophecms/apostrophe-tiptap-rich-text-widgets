@@ -134,8 +134,6 @@ ${appImports.invokeCode}
       const outputDir = argv.npm ? (__dirname + '/public/js') : (apos.rootDir + '/lib/modules/apostrophe-rich-text-widgets/public/js');
       const moduleNpmDir = __dirname + '/node_modules';
       const projectNpmDir = apos.rootDir + '/node_modules';
-      console.log('moduleNpmDir: ' + moduleNpmDir);
-      console.log('projectNpmDir: ' + projectNpmDir);
       fs.mkdirpSync(outputDir);
       await require('util').promisify(webpack)({
         entry: importFile,
