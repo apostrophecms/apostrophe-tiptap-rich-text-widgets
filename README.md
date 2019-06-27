@@ -1,3 +1,7 @@
+## Why?
+
+Many users of ApostropheCMS are aware of our plans to use the Vue-based [Tiptap](https://tiptap.scrumpy.io/) editor in Apostrophe 3.x. This module provides an early technology preview of that editor for Apostrophe 2.x. When present it replaces the CKEditor 4.x-based rich text editing experience that ships with ApostropheCMS.
+
 ## Requirements
 
 You must use Node 8 or better.
@@ -5,7 +9,7 @@ You must use Node 8 or better.
 ## Installation
 
 ```
-# First, cd to the root of your existing Apostrophe 2.x project
+# First, cd to the root of your existing Apostrophe 2.x project. Then...
 
 npm install apostrophe-tiptap-rich-text-widgets
 ```
@@ -23,27 +27,11 @@ require('apostrophe')({
 
 All rich text editor widgets on the site now use [tiptap](https://tiptap.scrumpy.io/) instead of CKEditor.
 
-## Using your existing Vue install
-
-```javascript
-// in app.js
-require('apostrophe')({
-  pushVue: false,
-  modules: {
-    'apostrophe-tiptap-rich-text-widgets': {}
-  }
-});
-```
-
-Normally this module will push Vue 2.x on the front end for the `user` scene (when users are logged in), as it is a requirement for tiptap to operate. You can prevent this by specifying `pushVue: false`. In this case, as a result of your own asset build, `window.Vue` must exist and must be Vue 2.x.
-
-## Automatic rich text sanitization
-
-Unlike the CKEditor-based editor module, this module automatically configures server-side rich text sanitization (`sanitizeHtml` configuration) based on the contents of your toolbar and styles option. There is no need to explicitly configure it.
-
 ## CKEditor-compatible toolbar configuration
 
 tiptap and CKEditor are not the same and do not have identical features. Identical behavior is not guaranteed. However many common CKEditor toolbar options are accepted.
+
+## Native tiptap toolbar configuration
 
 In addition, the following toolbar items are accepted natively:
 
@@ -62,7 +50,8 @@ All of these require no configuration, with the exception of `styles`. The `styl
 
 ```javascript
 styles: [
-  // Default style must come first
+  // If you do not include any `p` styles, one will be added for you, as
+  // tiptap/prosemirror inserts paragraphs in several situations.
   {
     tag: 'p',
     label: 'Paragraph'
@@ -79,5 +68,15 @@ styles: [
 ]
 ```
 
-**The `class` property may contain several space-separated classes.**
+**The `class` property may contain several space-separated class names.**
+
+> The `name` and `element` properties are accepted as fallbacks for `label` and `tag`, for backwards compatibility.
+
+## Adding more tiptap extensions
+
+You can write your own tiptap extensions, either at project level in `lib/modules/apostrophe-rich-text-widgets/src/apos/extensions`, or in an npm module that also uses `improve` to enhance `apostrophe-rich-text-widgets` and is configured *after* this module. These extensions will be autoloaded if present.
+
+Similarly you can write your own Vue components to provide UI for those extensions in `src/apos/components`.
+
+See the existing `src/apos/extensions` and `src/apos/components` folders of this module for examples.
 

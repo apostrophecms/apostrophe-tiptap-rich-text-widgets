@@ -1,4 +1,3 @@
-/public/js/bundle.js
 /build
 package-lock.json
 test/public/modules/*
