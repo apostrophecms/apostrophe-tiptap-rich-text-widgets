@@ -15,17 +15,19 @@ export default function() {
         type,
         widgetEditorComponentType
       },
-      // TODO: figure out how we participate in getData
       template: `
   <Component :is="widgetEditorComponentType" :type="type" :value="value" :options="options" />
   `
     });
+    aposEditor.$widget.data('tiptapApp', aposEditor.tiptapApp);
   });
 
   apos.on('tiptapStop', function(aposEditor) {
     aposEditor.tiptapApp.$original.html(aposEditor.tiptapApp.value);
     $(self.tiptapApp.el).replaceWith(aposEditor.tiptapApp.$original);
     aposEditor.focus = false;
+    aposEditor.tiptapApp = null;
+    aposEditor.$widget.data('tiptapApp', null);
   });
 }
 

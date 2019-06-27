@@ -25,9 +25,8 @@ apos.define('apostrophe-rich-text-widgets-editor', {
 
       // Bulk of the work happens in the Bridge Vue app
 
-//      console.log('Initial markup is: ' + self.$richText.html());
       apos.emit('tiptapStart', self, {
-        content: '<h4>Test Heading</h4>' // self.$richText.html()
+        content: self.$richText.html()
       });
 
       // TODO self.focus updates
