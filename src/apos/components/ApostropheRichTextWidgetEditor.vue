@@ -1,13 +1,15 @@
 <template>
-  <div class="apos-richtext-editor">
+  <div class="apos-tiptap-editor">
+    <div class="apos-tiptap-menubar__bubble"></div>
     <editor-menu-bar :editor="editor">
-      <div class="apos-richtext-menubar" slot-scope="{ commands, isActive }">
+      <div class="apos-tiptap-menubar" slot-scope="{ commands, isActive }">
         <component v-for="item in toolbar"
           :is="(tools[item] && tools[item].component) || 'ApostropheTiptapUndefined'"
           :name="item"
           :tool="tools[item]"
           :options="options"
           :editor="editor"
+          :icon="tools[item].icon"
         />
       </div>
     </editor-menu-bar>
@@ -163,7 +165,37 @@ export default {
 </script>
 
 <style type="text/css">
-  .apos-richtext-menubar {
-    margin: 12px 0;
-  }
+.apos-tiptap-menubar {
+  position: absolute;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -70px;
+  background-color: #323232;
+  color: white;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+.apos-tiptap-editor .ProseMirror:focus {
+  border: none;
+  outline: 2px solid #6516DD;
+  outline-offset: 10px;
+}
+
+.apos-tiptap-menubar__bubble {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  bottom: 10px;
+  left: 20px;
+  background-color: #323232;
+  border-radius: 4px;
+  height: 35px;
+  width: 35px;
+  bottom: auto;
+  top: -58px;
+  transform: rotate(45deg);
+}
 </style>
