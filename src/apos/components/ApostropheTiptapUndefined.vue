@@ -11,9 +11,3 @@ export default {
   }
 };
 </script>
-
-<style>
-  .apos-active {
-    background-color: red;
-  }
-</style>

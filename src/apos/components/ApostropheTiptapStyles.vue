@@ -1,14 +1,20 @@
 <template>
-  <select :value="active()" @change="style">
-    <option value="">----</option>
-    <option v-for="style, i in options.styles" :value="i">{{ style.label }}</option>
-  </select>
+  <div class="apos-tiptap-format">
+    <FormatSize title="Text Format" :size="18" />
+    <select class="apos-tiptap-format__select" :value="active()" @change="style">
+      <option value="">----</option>
+      <option v-for="style, i in options.styles" :value="i">{{ style.label }}</option>
+    </select>
+  </div>
 </template>
 
 <script>
 
+import FormatSize from 'vue-material-design-icons/FormatSize.vue'
+
 export default {
   name: 'ApostropheTiptapStyles',
+  components: { FormatSize },
   props: {
     name: String,
     editor: Object,
@@ -55,3 +61,18 @@ export default {
   }
 };
 </script>
+
+<style>
+  .apos-tiptap-format {
+    display: flex;
+    padding: 1.1rem 0.8rem;
+  }
+
+  .apos-tiptap-format__select {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 14px;
+  }
+
+</style>

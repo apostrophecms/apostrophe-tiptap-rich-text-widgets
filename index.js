@@ -17,54 +17,67 @@ module.exports = {
         label: 'Styles'
       },
       '|': {
-        component: 'ApostropheTiptapDivider'
+        component: 'ApostropheTiptapDivider',
+        icon: 'PowerOn'
       },
       'bold': {
         component: 'ApostropheTiptapButton',
-        label: 'Bold'
+        label: 'Bold',
+        icon: 'FormatBold'
       },
       'italic': {
         component: 'ApostropheTiptapButton',
-        label: 'Italic'
+        label: 'Italic',
+        icon: 'FormatItalic'
       },
       'horizontal_rule': {
         component: 'ApostropheTiptapButton',
-        label: 'Horizontal Rule'
+        label: 'Horizontal Rule',
+        icon: 'WindowMinimize'
       },
       'link': {
         component: 'ApostropheTiptapLink',
-        label: 'Link'
+        label: 'Link',
+        icon: 'Link'
       },
       'bullet_list': {
         component: 'ApostropheTiptapButton',
-        label: 'Bullets'
+        label: 'Bullets',
+        icon: 'FormatListBulleted'
       },
       'ordered_list': {
         component: 'ApostropheTiptapButton',
-        label: 'Ordered'
+        label: 'Ordered',
+        icon: 'FormatListNumbered'
       },
       'strike': {
         component: 'ApostropheTiptapButton',
-        label: 'Strike'
+        label: 'Strike',
+        icon: 'FormatStrikethrough'
       },
       'blockquote': {
         component: 'ApostropheTiptapButton',
-        label: 'Blockquote'
+        label: 'Blockquote',
+        icon: 'FormatQuoteOpen'
       },
       'code_block': {
         component: 'ApostropheTiptapButton',
-        label: 'Code Block'
+        label: 'Code Block',
+        icon: 'CodeBraces'
       },
       'undo': {
         component: 'ApostropheTiptapButton',
-        label: 'Undo'
+        label: 'Undo',
+        icon: 'Undo'
       },
       'redo': {
         component: 'ApostropheTiptapButton',
-        label: 'Redo'
+        label: 'Redo',
+        icon: 'Redo'
       },
       'table': {
         component: 'ApostropheTiptapTable',
+        icon: 'Table',
         // createTable is always allowed when this component is present in the toolbar,
         // these are the actions allowed on an existing table
         actions: [ 'deleteTable', 'addColumnBefore', 'addColumnAfter', 'deleteColumn', 'addRowBefore', 'addRowAfter', 'deleteRow', 'toggleCellMerge' ],
