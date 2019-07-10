@@ -81,6 +81,17 @@ module.exports = {
         // createTable is always allowed when this component is present in the toolbar,
         // these are the actions allowed on an existing table
         actions: [ 'deleteTable', 'addColumnBefore', 'addColumnAfter', 'deleteColumn', 'addRowBefore', 'addRowAfter', 'deleteRow', 'toggleCellMerge' ],
+        icons: {
+          createTable: 'Table',
+          deleteTable: 'TableRemove',
+          addColumnBefore: 'TableColumnPlusBefore',
+          addColumnAfter: 'TableColumnPlusAfter',
+          deleteColumn: 'TableColumnRemove',
+          addRowBefore: 'TableRowPlusBefore',
+          addRowAfter: 'TableRowPlusAfter',
+          deleteRow: 'TableRowRemove',
+          toggleCellMerge: 'TableMergeCells'
+        },
         labels: {
           createTable: 'Create Table',
           deleteTable: 'Delete Table',

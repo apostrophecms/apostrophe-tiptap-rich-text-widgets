@@ -1,7 +1,7 @@
 <template>
   <button :data-apos-tooltip="tool.label" @click="click()" class="apos-tiptap-menubar__button" :class="{ 'apos-tiptap-menubar__button--active': active() }">
-    <span v-if="icon">
-      <component :title="tool.label" :size="18" :is="icon"/>
+    <span v-if="tool.icon">
+      <component :title="tool.label" :size="18" :is="tool.icon"/>
     </span>
     <span v-else>
       {{ tool.label }}
@@ -29,8 +29,7 @@ export default {
   props: {
     name: String,
     editor: Object,
-    tool: Object,
-    icon: String
+    tool: Object
   },
   components: { 
     FormatBold,

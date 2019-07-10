@@ -9,7 +9,6 @@
           :tool="tools[item]"
           :options="options"
           :editor="editor"
-          :icon="tools[item].icon"
         />
       </div>
     </editor-menu-bar>
@@ -111,6 +110,7 @@ export default {
     stylesCompatibility(this.options.styles || []);
     const result = {
       tools: moduleOptionsBody(this.type).tools,
+      tableActions: moduleOptionsBody(this.type).tableActions,
       toolbar: toolbarCompatibility(this.options.toolbar),
       editor: new Editor({
         extensions: [
