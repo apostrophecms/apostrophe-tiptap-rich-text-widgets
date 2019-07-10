@@ -68,7 +68,9 @@ export default {
 <style>
   .apos-tiptap-menubar__button {
     color: white;
-    padding: 1.1rem 0.8rem;
+    padding: 10px 8px;
+    border: none;
+    background-color: transparent;
   }
 
   .apos-tiptap-menubar__button:hover {
