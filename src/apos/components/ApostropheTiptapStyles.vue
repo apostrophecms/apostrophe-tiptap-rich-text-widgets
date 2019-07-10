@@ -65,7 +65,7 @@ export default {
 <style>
   .apos-tiptap-format {
     display: flex;
-    padding: 1.1rem 0.8rem;
+    padding: 10px 8px;
   }
 
   .apos-tiptap-format__select {
