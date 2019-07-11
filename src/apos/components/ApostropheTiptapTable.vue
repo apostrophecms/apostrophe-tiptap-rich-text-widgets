@@ -1,5 +1,5 @@
 <template>
-  <button :data-apos-tooltip="tool.label" @click="createTable" class="apos-tiptap-menubar__button" v-if="!active()">
+  <button :data-apos-tooltip="tool.label" @click.prevent="createTable" class="apos-tiptap-menubar__button" v-if="!active()">
     <span v-if="tool.icons.createTable">
       <component :title="tool.labels.createTable" :size="18" :is="tool.icons.createTable"/>
     </span>

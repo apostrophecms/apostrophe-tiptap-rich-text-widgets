@@ -2,6 +2,18 @@
 
 Many users of ApostropheCMS are aware of our plans to use the Vue-based [Tiptap](https://tiptap.scrumpy.io/) editor in Apostrophe 3.x. This module provides an early technology preview of that editor for Apostrophe 2.x. When present it replaces the CKEditor 4.x-based rich text editing experience that ships with ApostropheCMS.
 
+## Stability
+
+As a technology preview, this module currently has a special stability policy:
+
+* We will undertake to avoid bc breaks in the use of the module, as documented, as a rich text editor.
+* However, changes will likely be made to the way new components, tooltip extensions, etc. can be added.
+* We expect that instability to cease around the time Apostrophe 3.x is released.
+
+So if you're just using it as a rich text editor, you may regard it as stable. But if you are extending it, you should expect to be an active participant in developing the module in parallel with the evolution of Apostrophe 3.x.
+
+One area that may be subject to change beyond these guidelines is the `link` button, which may at some point be subdivided into more than one button for a better user experience.
+
 ## Requirements
 
 You must use Node 8 or better.
@@ -50,8 +62,11 @@ All of these require no configuration, with the exception of `styles`. The `styl
 
 ```javascript
 styles: [
-  // If you do not include any `p` styles, one will be added for you, as
-  // tiptap/prosemirror inserts paragraphs in several situations.
+  // For now, for best results you MUST configure styles, and your styles MUST
+  // include the paragraph tag with no classes as one of the options.
+  // You may have other options based on the `p` tag that do have classes.
+  // The requirement to include `p` is likely to remain due to the way
+  // tiptap handles line breaks inside list items, etc.
   {
     tag: 'p',
     label: 'Paragraph'
@@ -93,6 +108,8 @@ lib/modules/apostrophe-rich-text/public/js/public-tiptap-bundle.js
 ```
 
 And that will become part of the assets pushed to your browser from this point on. You should commit it and deploy it as you would any source file. If you decide you don't want any custom extensions after all, you should remoe it.
+
+These are advanced techniques requiring a good understanding of tiptap internals.
 
 ## Contributing to this module
 

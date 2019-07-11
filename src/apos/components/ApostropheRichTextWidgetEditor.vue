@@ -136,7 +136,8 @@ export default {
         autoFocus: true,
         onUpdate: this.update,
         content: this.value.content,
-        useBuiltInExtensions: false
+        useBuiltInExtensions: false,
+        onBlur: this.blur
       }),
       widgetInfo: {
         data: this.value,
@@ -156,6 +157,9 @@ export default {
       widget.content = content;
 
       this.$emit('input', this.widgetInfo.data);
+    },
+    blur() {
+      this.$emit('blur');
     },
     command(name, options) {
       this.commands[name](options);

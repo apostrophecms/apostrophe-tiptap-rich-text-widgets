@@ -14,8 +14,6 @@ apos.define('apostrophe-rich-text-widgets-editor', {
         return;
       }
 
-      self.$widget.trigger('aposRichTextStarting');
-
       self.$richText = self.$widget.find('[data-rich-text]:first');
 
       self.options.styles = self.options.styles || [];
