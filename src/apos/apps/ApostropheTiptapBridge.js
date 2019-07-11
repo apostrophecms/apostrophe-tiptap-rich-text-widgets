@@ -34,7 +34,10 @@ export default function() {
     // This is a temporary solution to the deficiencies of tiptap blur events.
     // One concern is that it does not account for tabbing/shift-tabbing
     aposEditor.focusWatcher = function(e) {
-      if (!$(e.target).closest(aposEditor.$widget).length) {
+      const $target = $(e.target);
+      // We have to check whether the target is still in the body before drawing any
+      // conclusions, because of the Table button which swaps itself out when clicked
+      if ($target.closest('body').length && (!$target.closest(aposEditor.$widget).length)) {
         aposEditor.stop();
       } 
     };

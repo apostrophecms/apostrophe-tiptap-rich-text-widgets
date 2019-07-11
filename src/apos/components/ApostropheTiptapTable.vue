@@ -8,7 +8,7 @@
     </span>
   </button>
   <span v-else>
-    <button v-for="action in tool.actions" @click="editor.commands[action]" :data-apos-tooltip="tool.labels[action]" class="apos-tiptap-menubar__button">
+    <button v-for="action in tool.actions" @click.prevent="editor.commands[action]" :data-apos-tooltip="tool.labels[action]" class="apos-tiptap-menubar__button">
       <span v-if="tool.icons[action]">
         <component :title="tool.labels[action]" :size="18" :is="tool.icons[action]"/>
       </span>
