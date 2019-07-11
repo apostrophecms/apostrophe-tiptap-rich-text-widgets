@@ -1,3 +1,5 @@
+![](images/apostrophe-tiptap.gif)
+
 ## Why?
 
 Many users of ApostropheCMS are aware of our plans to use the Vue-based [Tiptap](https://tiptap.scrumpy.io/) editor in Apostrophe 3.x. This module provides an early technology preview of that editor for Apostrophe 2.x. When present it replaces the CKEditor 4.x-based rich text editing experience that ships with ApostropheCMS.
