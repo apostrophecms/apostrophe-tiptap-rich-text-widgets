@@ -59,6 +59,9 @@ In addition, the following toolbar items are accepted natively:
 `blockquote`
 `code_block`
 `styles`
+`undo`
+`redo`
+`table`
 
 All of these require no configuration, with the exception of `styles`. The `styles` toolbar item, if present, must be configured via the `styles` option. It is used to provide a choice of block elements, potentially with a choice of CSS classes:
 
@@ -112,6 +115,42 @@ lib/modules/apostrophe-rich-text/public/js/public-tiptap-bundle.js
 And that will become part of the assets pushed to your browser from this point on. You should commit it and deploy it as you would any source file. If you decide you don't want any custom extensions after all, you should remoe it.
 
 These are advanced techniques requiring a good understanding of tiptap internals.
+
+## Using this widget for just *some* of your rich text
+
+By default, this module "improves" `apostrophe-rich-text-widgets`, meaning that all of your rich text will use Tiptap.
+
+It is also possible to enable it only for certain subclasses of `apostrophe-rich-text-widgets`. Here is how to do it, in `app.js`:
+
+```javascript
+modules: {
+  'apostrophe-tiptap-rich-text-widgets': {},
+  'apostrophe-rich-text-widgets': {
+    tiptap: false
+  },
+  'apostrophe-tiptap-widgets': {
+    extend: 'apostrophe-rich-text-widgets',
+    tiptap: true
+  }
+}
+```
+
+In a template you may now use both:
+
+```javascript
+apos.area(data.page, 'body', {
+  widgets: {
+    'apostrophe-rich-text': {
+      toolbar: [ 'Bold', 'Italic', 'Link' ]
+    },
+    'apostrophe-tiptap': {
+      toolbar: [ 'bold', 'italic', 'link', 'table' ]
+    }
+  }
+});
+```
+
+> We don't use `apostrophe-tiptap-rich-text` as the widget name because that is the name of this npm module, which enhances all rich text widgets via the `improve` keyword and is not available for direct use as a module name in its own right.
 
 ## Contributing to this module
 

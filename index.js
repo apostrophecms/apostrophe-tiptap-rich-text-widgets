@@ -7,116 +7,130 @@ const fs = require('fs-extra');
 module.exports = {
   improve: 'apostrophe-rich-text-widgets',
 
-  browser: {
-    components: {
-      widgetEditor: 'ApostropheRichTextWidgetEditor'
-    },
-    tools: {
-      'styles': {
-        component: 'ApostropheTiptapStyles',
-        label: 'Styles'
+  beforeConstruct: function(self, options) {
+    options.browser = Object.assign({}, {
+      components: {
+        widgetEditor: 'ApostropheRichTextWidgetEditor'
       },
-      '|': {
-        component: 'ApostropheTiptapDivider',
-        icon: 'PowerOn'
-      },
-      'bold': {
-        component: 'ApostropheTiptapButton',
-        label: 'Bold',
-        icon: 'FormatBold'
-      },
-      'italic': {
-        component: 'ApostropheTiptapButton',
-        label: 'Italic',
-        icon: 'FormatItalic'
-      },
-      'horizontal_rule': {
-        component: 'ApostropheTiptapButton',
-        label: 'Horizontal Rule',
-        icon: 'WindowMinimize'
-      },
-      'link': {
-        component: 'ApostropheTiptapLink',
-        label: 'Link',
-        icon: 'Link'
-      },
-      'bullet_list': {
-        component: 'ApostropheTiptapButton',
-        label: 'Bullets',
-        icon: 'FormatListBulleted'
-      },
-      'ordered_list': {
-        component: 'ApostropheTiptapButton',
-        label: 'Ordered',
-        icon: 'FormatListNumbered'
-      },
-      'strike': {
-        component: 'ApostropheTiptapButton',
-        label: 'Strike',
-        icon: 'FormatStrikethrough'
-      },
-      'blockquote': {
-        component: 'ApostropheTiptapButton',
-        label: 'Blockquote',
-        icon: 'FormatQuoteOpen'
-      },
-      'code_block': {
-        component: 'ApostropheTiptapButton',
-        label: 'Code Block',
-        icon: 'CodeBraces'
-      },
-      'undo': {
-        component: 'ApostropheTiptapButton',
-        label: 'Undo',
-        icon: 'Undo'
-      },
-      'redo': {
-        component: 'ApostropheTiptapButton',
-        label: 'Redo',
-        icon: 'Redo'
-      },
-      'table': {
-        component: 'ApostropheTiptapTable',
-        icon: 'Table',
-        // createTable is always allowed when this component is present in the toolbar,
-        // these are the actions allowed on an existing table
-        actions: [ 'deleteTable', 'addColumnBefore', 'addColumnAfter', 'deleteColumn', 'addRowBefore', 'addRowAfter', 'deleteRow', 'toggleCellMerge' ],
-        icons: {
-          createTable: 'Table',
-          deleteTable: 'TableRemove',
-          addColumnBefore: 'TableColumnPlusBefore',
-          addColumnAfter: 'TableColumnPlusAfter',
-          deleteColumn: 'TableColumnRemove',
-          addRowBefore: 'TableRowPlusBefore',
-          addRowAfter: 'TableRowPlusAfter',
-          deleteRow: 'TableRowRemove',
-          toggleCellMerge: 'TableMergeCells'
+      tools: {
+        'styles': {
+          component: 'ApostropheTiptapStyles',
+          label: 'Styles'
         },
-        labels: {
-          createTable: 'Create Table',
-          deleteTable: 'Delete Table',
-          addColumnBefore: 'Add Column Before',
-          addColumnAfter: 'Add Column After',
-          deleteColumn: 'Delete Column',
-          addRowBefore: 'Add Row Before',
-          addRowAfter: 'Add Row After',
-          deleteRow: 'Delete Row',
-          toggleCellMerge: 'Merge Cells'
+        '|': {
+          component: 'ApostropheTiptapDivider',
+          icon: 'PowerOn'
+        },
+        'bold': {
+          component: 'ApostropheTiptapButton',
+          label: 'Bold',
+          icon: 'FormatBold'
+        },
+        'italic': {
+          component: 'ApostropheTiptapButton',
+          label: 'Italic',
+          icon: 'FormatItalic'
+        },
+        'horizontal_rule': {
+          component: 'ApostropheTiptapButton',
+          label: 'Horizontal Rule',
+          icon: 'WindowMinimize'
+        },
+        'link': {
+          component: 'ApostropheTiptapLink',
+          label: 'Link',
+          icon: 'Link'
+        },
+        'bullet_list': {
+          component: 'ApostropheTiptapButton',
+          label: 'Bullets',
+          icon: 'FormatListBulleted'
+        },
+        'ordered_list': {
+          component: 'ApostropheTiptapButton',
+          label: 'Ordered',
+          icon: 'FormatListNumbered'
+        },
+        'strike': {
+          component: 'ApostropheTiptapButton',
+          label: 'Strike',
+          icon: 'FormatStrikethrough'
+        },
+        'blockquote': {
+          component: 'ApostropheTiptapButton',
+          label: 'Blockquote',
+          icon: 'FormatQuoteOpen'
+        },
+        'code_block': {
+          component: 'ApostropheTiptapButton',
+          label: 'Code Block',
+          icon: 'CodeBraces'
+        },
+        'undo': {
+          component: 'ApostropheTiptapButton',
+          label: 'Undo',
+          icon: 'Undo'
+        },
+        'redo': {
+          component: 'ApostropheTiptapButton',
+          label: 'Redo',
+          icon: 'Redo'
+        },
+        'table': {
+          component: 'ApostropheTiptapTable',
+          icon: 'Table',
+          // createTable is always allowed when this component is present in the toolbar,
+          // these are the actions allowed on an existing table
+          actions: [ 'deleteTable', 'addColumnBefore', 'addColumnAfter', 'deleteColumn', 'addRowBefore', 'addRowAfter', 'deleteRow', 'toggleCellMerge' ],
+          icons: {
+            createTable: 'Table',
+            deleteTable: 'TableRemove',
+            addColumnBefore: 'TableColumnPlusBefore',
+            addColumnAfter: 'TableColumnPlusAfter',
+            deleteColumn: 'TableColumnRemove',
+            addRowBefore: 'TableRowPlusBefore',
+            addRowAfter: 'TableRowPlusAfter',
+            deleteRow: 'TableRowRemove',
+            toggleCellMerge: 'TableMergeCells'
+          },
+          labels: {
+            createTable: 'Create Table',
+            deleteTable: 'Delete Table',
+            addColumnBefore: 'Add Column Before',
+            addColumnAfter: 'Add Column After',
+            deleteColumn: 'Delete Column',
+            addRowBefore: 'Add Row Before',
+            addRowAfter: 'Add Row After',
+            deleteRow: 'Delete Row',
+            toggleCellMerge: 'Merge Cells'
+          }
         }
       }
-    }
+    }, options.browser || {});
   },
 
   construct: function(self, options) {
 
     const superGetCreateSingletonOptions = self.getCreateSingletonOptions;
     self.getCreateSingletonOptions = function(req) {
-      return { 
-        ...superGetCreateSingletonOptions(req),
-        tools: self.options.browser.tools,
-        components: self.options.browser.components
-      };
+      if (options.tiptap === false) {
+        return { 
+          ...superGetCreateSingletonOptions(req),
+          tiptap: false
+        };
+      } else {
+        const result = { 
+          ...superGetCreateSingletonOptions(req),
+          tools: self.options.browser.tools,
+          components: self.options.browser.components
+        };
+        return result;
+      }
     };
+
+    if (options.tiptap === false) {
+      return;
+    }
 
     const superPushAssets = self.pushAssets;
     self.pushAssets = function() {

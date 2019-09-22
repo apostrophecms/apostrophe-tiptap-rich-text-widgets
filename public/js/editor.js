@@ -1,15 +1,25 @@
 apos.define('apostrophe-rich-text-widgets-editor', {
 
   afterConstruct: function(self) {
+    console.log(self.__meta.name);
+    console.log('>>', apos.modules[self.__meta.name.replace(/-editor$/, '')].options);
+    if (apos.modules[self.__meta.name.replace(/-editor$/, '')].options.tiptap === false) {
+      return;
+    }
     return self.start();
   },
 
   construct: function(self, options) {
+    console.log(self.__meta.name);
+    console.log('>>', apos.modules[self.__meta.name.replace(/-editor$/, '')].options);
+    if (apos.modules[self.__meta.name.replace(/-editor$/, '')].options.tiptap === false) {
+      return;
+    }
 
     // Start contextual editing (on click for instance)
 
     self.start = function() {
-
+      console.log('Starting!');
       if (self.started || options.readOnly) {
         return;
       }
