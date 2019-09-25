@@ -116,11 +116,29 @@ And that will become part of the assets pushed to your browser from this point o
 
 These are advanced techniques requiring a good understanding of tiptap internals.
 
-## Using this widget for just *some* of your rich text
+## Preserving additional tags and attributes
 
-By default, this module "improves" `apostrophe-rich-text-widgets`, meaning that all of your rich text will use Tiptap.
+The default `sanitize-html` configuration of Apostrophe does not save `colspan` and `rowspan` attributes, which the table editor of this module can produce. You will want to use a configuration like this. Note that since we are touching `allowedAttributes`, we must list *all* of the attributes that we believe should be allowed on any tag, not just the ones for table cells. If you fail to address this, you will lose the `href` attributes of your links.
 
-It is also possible to enable it only for certain subclasses of `apostrophe-rich-text-widgets`. Here is how to do it, in `app.js`:
+```javascript
+modules: {
+  'apostrophe-rich-text-widgets': {
+    sanitizeHtml: {
+      allowedAttributes: {
+        a: [ 'href', 'name', 'target' ],
+        td: [ 'colspan', 'rowspan' ],
+        th: [ 'colspan', 'rowspan' ]
+      }
+    }
+  }
+}
+```
+
+## Using this widget for just some of your rich text
+
+This module "improves" `apostrophe-rich-text-widgets`, meaning that all of your rich text will use Tiptap.
+
+However, it is also possible to enable it only for certain subclasses of `apostrophe-rich-text-widgets`. Here is how to do it, in `app.js`:
 
 ```javascript
 modules: {
@@ -130,12 +148,13 @@ modules: {
   },
   'apostrophe-tiptap-widgets': {
     extend: 'apostrophe-rich-text-widgets',
-    tiptap: true
+    tiptap: true,
+    label: 'Tiptap Rich Text'
   }
 }
 ```
 
-In a template you may now use both:
+In a template you may now use the two side by side:
 
 ```javascript
 apos.area(data.page, 'body', {
@@ -150,11 +169,13 @@ apos.area(data.page, 'body', {
 });
 ```
 
+One common use case is to gain Tiptap's rich table editing features while not fully committing to its use for all text.
+
 > We don't use `apostrophe-tiptap-rich-text` as the widget name because that is the name of this npm module, which enhances all rich text widgets via the `improve` keyword and is not available for direct use as a module name in its own right.
 
 ## Contributing to this module
 
-Feel free! Be aware that if you add or modify Vue components and extensions in the npm module itself, you will need to run:
+Feel free! Be aware that if you add or modify the Vue components and extensions in the npm module itself, you will need to run:
 
 ```
 node app apostrophe-rich-text-widgets:build --npm
@@ -162,5 +183,5 @@ node app apostrophe-rich-text-widgets:build --npm
 
 Otherwise the asset bundle is built at project level. Note that when you use `--npm` project-level extensions and components are *not* included in the bundle, since their source code won't be there for anyone else who installs the module.
 
-> **If you have a project-level `lib/modules/apostrophe-rich-text-widgets/public/js/project-tiptap-bundle.js` file, that will get loaded instead when you run `node app`, so make sure you remove that to test your build.**
+> **If you have a project-level `lib/modules/apostrophe-rich-text-widgets/public/js/project-tiptap-bundle.js` file, that will get loaded instead when you run `node app`, so make sure you remove that to test your build before submitting a PR.**
 
