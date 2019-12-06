@@ -40,7 +40,8 @@
     "vue-material-design-icons": "^3.3.1",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.17",
-    "webpack": "^4.19.1"
+    "webpack": "^4.19.1",
+    "xlsx": "^0.15.3"
   },
   "engines": {
     "node": ">=8.0.0"
