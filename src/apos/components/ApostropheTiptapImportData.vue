@@ -8,11 +8,11 @@
         <div class="apos-window-form">
           <form v-if="editing">
             <fieldset class="apos-window-fieldset">
-              <label class="apos-window-label" for="file">Upload CSV or Excel file - This will replace previous content in your RichText editor</label>
+              <label class="apos-window-label" for="file">Upload a CSV or Excel file — this will replace all previous content in the rich text editor with a new table</label>
               <input class="apos-window-input" type="file" name="file" accept=".xls, .xlsx, .csv" @change="onFilePicked"/>
             </fieldset>
           </form>
-          <table ref="table">
+          <table>
             <tr class="apos-modal-preview" v-for="(row, index) in preview" :key="index">
               <td class="apos-modal-preview__cell" v-for="(cell, i) in row" :key="i">
                 {{ cell }}
