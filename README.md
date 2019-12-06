@@ -39,6 +39,35 @@ require('apostrophe')({
 });
 ```
 
+```javascript
+// in whatever html page
+{{
+  apos.area(data.page, 'areaNameYouWant', {
+    widgets: {
+      'apostrophe-rich-text': {
+        toolbar: [ 'bold', 'italic', 'link', 'table' ],
+        styles: [
+          {
+            tag: 'p',
+            label: 'Paragraph'
+          },
+          {
+            tag: 'h3',
+            label: 'Heading'
+          },
+          {
+            tag: 'h3',
+            'class': 'right',
+            label: 'Heading (Right)'
+          }
+        ]
+      }
+    }
+  })
+}}
+```
+Each time an `apostrophe-rich-text` widget is added to a template, the `toolbar` and `styles` options are mandatory.
+
 All rich text editor widgets on the site now use [tiptap](https://tiptap.scrumpy.io/) instead of CKEditor.
 
 ## CKEditor-compatible toolbar configuration

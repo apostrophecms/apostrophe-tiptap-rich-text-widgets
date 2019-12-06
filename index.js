@@ -104,6 +104,11 @@ module.exports = {
             deleteRow: 'Delete Row',
             toggleCellMerge: 'Merge Cells'
           }
+        },
+        'modal': {
+          component: 'ApostropheTiptapImportData',
+          label: 'Upload',
+          icon: 'FileUpload'
         }
       }
     }, options.browser || {});
