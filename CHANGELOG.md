@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+Import featured documented in README.
+
 ## 0.3.0
 
 Spreadsheet import button supporting Excel and CSV files. The imported spreadsheet becomes a table in your rich text widget, replacing all previous content in the widget. Thanks to Michelin for making this possible via [ApostropheCMS Enterprise Support](https://apostrophecms.com/support/enterprise-support).

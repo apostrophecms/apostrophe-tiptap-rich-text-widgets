@@ -109,6 +109,11 @@ module.exports = {
           component: 'ApostropheTiptapImportData',
           label: 'Upload',
           icon: 'FileUpload'
+        },
+        'import': {
+          component: 'ApostropheTiptapImportData',
+          label: 'Upload',
+          icon: 'FileUpload'
         }
       }
     }, options.browser || {});
@@ -119,12 +124,12 @@ module.exports = {
     const superGetCreateSingletonOptions = self.getCreateSingletonOptions;
     self.getCreateSingletonOptions = function(req) {
       if (options.tiptap === false) {
-        return { 
+        return {
           ...superGetCreateSingletonOptions(req),
           tiptap: false
         };
       } else {
-        const result = { 
+        const result = {
           ...superGetCreateSingletonOptions(req),
           tools: self.options.browser.tools,
           components: self.options.browser.components

@@ -45,7 +45,7 @@ require('apostrophe')({
   apos.area(data.page, 'areaNameYouWant', {
     widgets: {
       'apostrophe-rich-text': {
-        toolbar: [ 'bold', 'italic', 'link', 'table' ],
+        toolbar: [ 'bold', 'italic', 'link', 'table', 'import' ],
         styles: [
           {
             tag: 'p',
@@ -120,6 +120,18 @@ styles: [
 **The `class` property may contain several space-separated class names.**
 
 > The `name` and `element` properties are accepted as fallbacks for `label` and `tag`, for backwards compatibility.
+
+Another option is `import`, allowing to import a CSV or Excel file in a table.
+
+![](images/import_icon.png)
+
+It has a preview feature:
+
+![](images/import_preview.png)
+
+Then, the imported table is editable:
+
+![](images/import_edition.png)
 
 ## Adding more tiptap extensions
 
