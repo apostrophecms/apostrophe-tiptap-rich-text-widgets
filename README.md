@@ -144,7 +144,7 @@ See the existing `src/apos/extensions` and `src/apos/components` folders of this
 If you add extensions, you must run this task to rebuild the frontend JavaScript code:
 
 ```
-node app apostrophe-rich-text-widgets:build
+node app apostrophe-tiptap-widgets:build
 ```
 
 This will create the file:
@@ -219,7 +219,7 @@ One common use case is to gain Tiptap's rich table editing features while not fu
 Feel free! Be aware that if you add or modify the Vue components and extensions in the npm module itself, you will need to run:
 
 ```
-node app apostrophe-rich-text-widgets:build --npm
+node app apostrophe-tiptap-widgets:build --npm
 ```
 
 Otherwise the asset bundle is built at project level. Note that when you use `--npm` project-level extensions and components are *not* included in the bundle, since their source code won't be there for anyone else who installs the module.

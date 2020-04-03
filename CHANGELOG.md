@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.2
+
+Import feature in public bundle.
+
 ## 0.3.1
 
 Import featured documented in README.
