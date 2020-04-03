@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/apostrophecms/apostrophe-tiptap-rich-text-widgets/tree/master.svg?style=svg)](https://circleci.com/gh/apostrophecms/apostrophe-tiptap-rich-text-widgets/tree/master)
+
 ![](images/apostrophe-tiptap.gif)
 
 ## Why?
