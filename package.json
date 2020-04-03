@@ -1,6 +1,6 @@
 {
   "name": "apostrophe-tiptap-rich-text-widgets",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Wrapper allowing the use of the tiptap vue-based rich-text editor for Apostrophe 2.x. In 3.x it will be standard equipment.",
   "main": "index.js",
   "scripts": {

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.3
+
+Documentation clarification regarding running the build task (not something you need to worry about unless you are extending this module's capabilities). No code changes.
+
 ## 0.3.2
 
 Import feature in public bundle.

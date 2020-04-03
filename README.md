@@ -219,10 +219,12 @@ One common use case is to gain Tiptap's rich table editing features while not fu
 Feel free! Be aware that if you add or modify the Vue components and extensions in the npm module itself, you will need to run:
 
 ```
-node app apostrophe-tiptap-widgets:build --npm
+# NOTE: apostrophe-rich-text-widgets, NOT apostrophe-tiptap-rich-text-widgets
+node app apostrophe-rich-text-widgets:build --npm
 ```
 
 Otherwise the asset bundle is built at project level. Note that when you use `--npm` project-level extensions and components are *not* included in the bundle, since their source code won't be there for anyone else who installs the module.
 
 > **If you have a project-level `lib/modules/apostrophe-rich-text-widgets/public/js/project-tiptap-bundle.js` file, that will get loaded instead when you run `node app`, so make sure you remove that to test your build before submitting a PR.**
 
+> If you are following "using this module for just some of your rich text" above, you will need to substitute the name of your custom module that extends `apostrophe-rich-text-widgets` when running the build task.
