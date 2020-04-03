@@ -6,7 +6,7 @@ import {
 export default class Paragraph extends Node {
 
   get name() {
-    return 'paragraph'
+    return 'paragraph';
   }
 
   get schema() {
@@ -32,9 +32,9 @@ export default class Paragraph extends Node {
           class: node.attrs.class || null
         };
 
-        return [ 'p', attrs, 0 ];
+        return ['p', attrs, 0];
       }
-    }
+    };
   }
 
   commands({ type, schema }) {
@@ -51,4 +51,3 @@ export default class Paragraph extends Node {
     return styles.filter(style => (style.tag === 'p'));
   }
 }
-

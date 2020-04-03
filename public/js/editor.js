@@ -1,8 +1,8 @@
 apos.define('apostrophe-rich-text-widgets-editor', {
 
   afterConstruct: function(self) {
-    console.log(self.__meta.name);
-    console.log('>>', apos.modules[self.__meta.name.replace(/-editor$/, '')].options);
+    apos.utils.log(self.__meta.name);
+    apos.utils.log('>>', apos.modules[self.__meta.name.replace(/-editor$/, '')].options);
     if (apos.modules[self.__meta.name.replace(/-editor$/, '')].options.tiptap === false) {
       return;
     }
@@ -10,8 +10,8 @@ apos.define('apostrophe-rich-text-widgets-editor', {
   },
 
   construct: function(self, options) {
-    console.log(self.__meta.name);
-    console.log('>>', apos.modules[self.__meta.name.replace(/-editor$/, '')].options);
+    apos.utils.log(self.__meta.name);
+    apos.utils.log('>>', apos.modules[self.__meta.name.replace(/-editor$/, '')].options);
     if (apos.modules[self.__meta.name.replace(/-editor$/, '')].options.tiptap === false) {
       return;
     }
@@ -19,7 +19,7 @@ apos.define('apostrophe-rich-text-widgets-editor', {
     // Start contextual editing (on click for instance)
 
     self.start = function() {
-      console.log('Starting!');
+      apos.utils.log('Starting!');
       if (self.started || options.readOnly) {
         return;
       }

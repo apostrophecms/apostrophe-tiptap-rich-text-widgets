@@ -39,7 +39,7 @@ export default class Styles extends Node {
           class: node.attrs.class || null
         };
 
-        return [ node.attrs.tag, attrs, 0 ];
+        return [node.attrs.tag, attrs, 0];
       }
 
     };

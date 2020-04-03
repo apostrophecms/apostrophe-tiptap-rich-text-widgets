@@ -1,3 +1,8 @@
 {
-  "extends": "apostrophe"
+  "extends": "apostrophe",
+  "ignorePatterns": [
+    "node_modules",
+    "public/js/tiptap-bundle.js",
+    "public/js/bundle.js"
+  ]
 }

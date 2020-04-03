@@ -13,7 +13,7 @@ module.exports = {
         widgetEditor: 'ApostropheRichTextWidgetEditor'
       },
       tools: {
-        'styles': {
+        styles: {
           component: 'ApostropheTiptapStyles',
           label: 'Styles'
         },
@@ -21,67 +21,67 @@ module.exports = {
           component: 'ApostropheTiptapDivider',
           icon: 'PowerOn'
         },
-        'bold': {
+        bold: {
           component: 'ApostropheTiptapButton',
           label: 'Bold',
           icon: 'FormatBold'
         },
-        'italic': {
+        italic: {
           component: 'ApostropheTiptapButton',
           label: 'Italic',
           icon: 'FormatItalic'
         },
-        'horizontal_rule': {
+        horizontal_rule: {
           component: 'ApostropheTiptapButton',
           label: 'Horizontal Rule',
           icon: 'WindowMinimize'
         },
-        'link': {
+        link: {
           component: 'ApostropheTiptapLink',
           label: 'Link',
           icon: 'Link'
         },
-        'bullet_list': {
+        bullet_list: {
           component: 'ApostropheTiptapButton',
           label: 'Bullets',
           icon: 'FormatListBulleted'
         },
-        'ordered_list': {
+        ordered_list: {
           component: 'ApostropheTiptapButton',
           label: 'Ordered',
           icon: 'FormatListNumbered'
         },
-        'strike': {
+        strike: {
           component: 'ApostropheTiptapButton',
           label: 'Strike',
           icon: 'FormatStrikethrough'
         },
-        'blockquote': {
+        blockquote: {
           component: 'ApostropheTiptapButton',
           label: 'Blockquote',
           icon: 'FormatQuoteOpen'
         },
-        'code_block': {
+        code_block: {
           component: 'ApostropheTiptapButton',
           label: 'Code Block',
           icon: 'CodeBraces'
         },
-        'undo': {
+        undo: {
           component: 'ApostropheTiptapButton',
           label: 'Undo',
           icon: 'Undo'
         },
-        'redo': {
+        redo: {
           component: 'ApostropheTiptapButton',
           label: 'Redo',
           icon: 'Redo'
         },
-        'table': {
+        table: {
           component: 'ApostropheTiptapTable',
           icon: 'Table',
           // createTable is always allowed when this component is present in the toolbar,
           // these are the actions allowed on an existing table
-          actions: [ 'deleteTable', 'addColumnBefore', 'addColumnAfter', 'deleteColumn', 'addRowBefore', 'addRowAfter', 'deleteRow', 'toggleCellMerge' ],
+          actions: ['deleteTable', 'addColumnBefore', 'addColumnAfter', 'deleteColumn', 'addRowBefore', 'addRowAfter', 'deleteRow', 'toggleCellMerge'],
           icons: {
             createTable: 'Table',
             deleteTable: 'TableRemove',
@@ -105,12 +105,12 @@ module.exports = {
             toggleCellMerge: 'Merge Cells'
           }
         },
-        'modal': {
+        modal: {
           component: 'ApostropheTiptapImportData',
           label: 'Upload',
           icon: 'FileUpload'
         },
-        'import': {
+        import: {
           component: 'ApostropheTiptapImportData',
           label: 'Upload',
           icon: 'FileUpload'
@@ -212,14 +212,14 @@ ${appImports.invokeCode}
         },
         resolveLoader: {
           extensions: ['*', '.js', '.vue', '.json'],
-          modules: argv.npm ? [ moduleNpmDir ] : [ moduleNpmDir, projectNpmDir ]
+          modules: argv.npm ? [moduleNpmDir] : [moduleNpmDir, projectNpmDir]
         },
         resolve: {
           extensions: ['*', '.js', '.vue', '.json'],
           alias: {
             'apostrophe/vue$': 'vue/dist/vue.esm.js'
           },
-          modules: argv.npm ? [ moduleNpmDir ] : [ moduleNpmDir, projectNpmDir ]
+          modules: argv.npm ? [moduleNpmDir] : [moduleNpmDir, projectNpmDir]
         },
         stats: 'verbose',
         module: {

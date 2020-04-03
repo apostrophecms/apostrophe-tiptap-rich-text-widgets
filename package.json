@@ -4,7 +4,7 @@
   "description": "Wrapper allowing the use of the tiptap vue-based rich-text editor for Apostrophe 2.x. In 3.x it will be standard equipment.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx eslint ."
   },
   "repository": {
     "type": "git",
