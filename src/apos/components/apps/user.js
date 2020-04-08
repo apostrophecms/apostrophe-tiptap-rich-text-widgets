@@ -1,3 +1,6 @@
+/* globals apos CKEDITOR _ */
+// apos and jQuery always available since this is used logged in by editors.
+
 // If we're logged in, rich text has a "player"
 // to implement the "click to start editing" behavior.
 // Provide a "lean" player that just wraps that play method,
@@ -15,7 +18,6 @@
 apos.define('apostrophe-rich-text-widgets-editor', {
 
   construct: function(self, options) {
- 
     // Start contextual editing (on click for instance)
 
     self.start = function() {
@@ -61,7 +63,7 @@ apos.define('apostrophe-rich-text-widgets-editor', {
       }
 
       // This will allow loading of extra plugins for each editor
-      var extraPlugins = [ 'split' ];
+      var extraPlugins = ['split'];
       // Additional standard plugins can be configured
       // simply by name, third-party plugins need an
       // object with name and path properties
@@ -80,7 +82,7 @@ apos.define('apostrophe-rich-text-widgets-editor', {
 
       self.config = {
         extraPlugins: extraPlugins,
-        toolbar: [ self.toolbar ],
+        toolbar: [self.toolbar],
         stylesSet: self.styles,
         on: {
           // TODO these event handlers should check whether the ckeditor ckeditorInstance

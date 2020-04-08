@@ -1,3 +1,5 @@
+/* globals apos $ */
+// apos and jQuery always available since this is used logged in by editors.
 import Vue from 'apostrophe/vue';
 
 export default function() {
@@ -39,7 +41,7 @@ export default function() {
       // conclusions, because of the Table button which swaps itself out when clicked
       if ($target.closest('body').length && (!$target.closest(aposEditor.$widget).length)) {
         aposEditor.stop();
-      } 
+      }
     };
     // Install on next tick to avoid being fired for the original click that opened
     // the editor in some cases, such as in a pieces modal
@@ -54,4 +56,3 @@ export default function() {
     $('body').off('click', aposEditor.focusWatcher);
   });
 }
-
