@@ -12,7 +12,7 @@
               <input class="apos-window-input" type="file" name="file" accept=".xls, .xlsx, .csv" @change="onFilePicked"/>
             </fieldset>
           </form>
-          <table>
+          <table data-vue-preview>
             <tr class="apos-modal-preview" v-for="(row, index) in preview" :key="index">
               <td class="apos-modal-preview__cell" v-for="(cell, i) in row" :key="i">
                 {{ cell }}
@@ -65,15 +65,9 @@ export default {
     },
     save() {
       // get HTML table from Vue template and put into TipTap editor
-      const table = document.querySelector('table');
-      this.editor.setContent(table.outerHTML);
-
-      // create a transaction to force TipTap autosave mechanism
-      // by default, the focus is on the first cell of the table
-      // so replace this by the same content - this triggers TipTap to save the whole table
-      const transaction = this.editor.state.tr.insertText(this.preview[0][0]);
-      this.editor.view.dispatch(transaction);
-
+      const table = document.querySelector('table[data-vue-preview]');
+      table.removeAttribute('data-vue-preview');
+      this.editor.setContent(table.outerHTML, true);
       this.editing = false;
     },
     active() {
