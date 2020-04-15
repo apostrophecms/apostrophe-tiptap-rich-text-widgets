@@ -25,8 +25,6 @@ export default function() {
         },
         stop() {
           this.original.html(this.value.content);
-          console.log('** calling replaceWith');
-          console.log(this.original[0]);
           $(this.$el).replaceWith(this.original);
         }
       },
