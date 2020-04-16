@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.5
+
+Fixed bugs relating to importing a second table in a second widget on the same page, and also to adding a following widget right after a tiptap widget is imported as a table.
+
 ## 0.3.4
 
 Adds Apostrophe standard Javascript linting.
