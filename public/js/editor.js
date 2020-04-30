@@ -50,10 +50,15 @@ apos.define('apostrophe-rich-text-widgets-editor', {
     // End contextual editing (on blur for instance)
 
     self.stop = function() {
-
       apos.emit('tiptapStop', self);
-      // Above event handler populates self.data
-      self.$richText.html(self.data);
+      self.$richText = self.$widget.find('[data-rich-text]:first');
+      if (!self.$richText.length) {
+        // When we add a second widget this is called again and the data-rich-text of the first one added
+        // in this page editing session is mysteriously missing, just restore it
+        self.$widget.append($('<div data-rich-text="" class="apos-rich-text"></div>'));
+        self.$richText = self.$widget.find('[data-rich-text]:first');
+      }
+      self.$richText.html(self.tiptapApp.value.content);
       self.$richText.data('aposRichTextState', undefined);
       self.$widget.trigger('aposRichTextStopped');
       self.started = false;
