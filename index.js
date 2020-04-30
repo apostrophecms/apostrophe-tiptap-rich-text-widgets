@@ -146,7 +146,9 @@ module.exports = {
     self.pushAssets = function() {
       // If project level bundle exists, push that instead.
       // The default push-both behavior would be problematic here
-      self.pushAsset('script', fs.existsSync(self.apos.rootDir + '/lib/modules/apostrophe-rich-text-widgets/public/js/project-tiptap-bundle.js') ? 'project-tiptap-bundle' : 'tiptap-bundle', { when: 'user' });
+      var pushing = fs.existsSync(self.apos.rootDir + '/lib/modules/apostrophe-rich-text-widgets/public/js/project-tiptap-bundle.js') ? 'project-tiptap-bundle' : 'tiptap-bundle';
+      console.log('*** pushing: ' + pushing);
+      self.pushAsset('script', pushing, { when: 'user' });
       superPushAssets();
     };
 

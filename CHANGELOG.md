@@ -1,8 +1,14 @@
 # Changelog
 
-## 0.3.5
+## 0.3.6
+
+Actual release of fixes intended for 0.3.5, which did not include them due to a merge oversight:
 
 Fixed bugs relating to importing a second table in a second widget on the same page, and also to adding a following widget right after a tiptap widget is imported as a table.
+
+## 0.3.5
+
+No changes due to merge oversight.
 
 ## 0.3.4
 
