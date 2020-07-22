@@ -35,7 +35,7 @@ export default {
       return this.editor.isActive.table();
     }
   },
-  components: { 
+  components: {
     Table,
     TableRemove,
     TableColumnPlusBefore,
@@ -44,7 +44,9 @@ export default {
     TableRowPlusBefore,
     TableRowPlusAfter,
     TableRowRemove,
-    TableMergeCells
+    TableMergeCells,
+    TableHeaderRow,
+    TableHeaderColumn
   },
 };
 
@@ -57,6 +59,8 @@ import TableRowPlusBefore from 'vue-material-design-icons/TableRowPlusBefore.vue
 import TableRowPlusAfter from 'vue-material-design-icons/TableRowPlusAfter.vue'
 import TableRowRemove from 'vue-material-design-icons/TableRowRemove.vue'
 import TableMergeCells from 'vue-material-design-icons/TableMergeCells.vue'
+import TableHeaderRow from 'vue-material-design-icons/TableArrowRight.vue'
+import TableHeaderColumn from 'vue-material-design-icons/TableArrowDown.vue'
 </script>
 <style>
   td {

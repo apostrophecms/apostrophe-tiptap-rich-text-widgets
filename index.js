@@ -81,7 +81,18 @@ module.exports = {
           icon: 'Table',
           // createTable is always allowed when this component is present in the toolbar,
           // these are the actions allowed on an existing table
-          actions: ['deleteTable', 'addColumnBefore', 'addColumnAfter', 'deleteColumn', 'addRowBefore', 'addRowAfter', 'deleteRow', 'toggleCellMerge'],
+          actions: [
+            'deleteTable',
+            'addColumnBefore',
+            'addColumnAfter',
+            'deleteColumn',
+            'addRowBefore',
+            'addRowAfter',
+            'deleteRow',
+            'toggleCellMerge',
+            'toggleHeaderRow',
+            'toggleHeaderColumn'
+          ],
           icons: {
             createTable: 'Table',
             deleteTable: 'TableRemove',
@@ -91,7 +102,9 @@ module.exports = {
             addRowBefore: 'TableRowPlusBefore',
             addRowAfter: 'TableRowPlusAfter',
             deleteRow: 'TableRowRemove',
-            toggleCellMerge: 'TableMergeCells'
+            toggleCellMerge: 'TableMergeCells',
+            toggleHeaderRow: 'TableHeaderRow',
+            toggleHeaderColumn: 'TableHeaderColumn'
           },
           labels: {
             createTable: 'Create Table',
@@ -102,7 +115,10 @@ module.exports = {
             addRowBefore: 'Add Row Before',
             addRowAfter: 'Add Row After',
             deleteRow: 'Delete Row',
-            toggleCellMerge: 'Merge Cells'
+            toggleCellMerge: 'Merge Cells',
+            toggleHeaderRow: 'Toggle Table Header Row',
+            toggleHeaderColumn: 'Toggle Table Header Column'
+
           }
         },
         modal: {
