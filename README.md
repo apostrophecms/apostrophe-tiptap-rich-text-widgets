@@ -146,7 +146,7 @@ See the existing `src/apos/extensions` and `src/apos/components` folders of this
 If you add extensions, you must run this task to rebuild the frontend JavaScript code:
 
 ```
-node app apostrophe-tiptap-widgets:build
+node app apostrophe-rich-text-widgets:build
 ```
 
 This will create the file:
