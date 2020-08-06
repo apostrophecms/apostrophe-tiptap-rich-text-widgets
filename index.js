@@ -8,6 +8,15 @@ module.exports = {
   improve: 'apostrophe-rich-text-widgets',
 
   beforeConstruct: function(self, options) {
+    options.sanitizeHtml = options.sanitizeHtml || {};
+
+    options.sanitizeHtml.allowedAttributes = {
+      ...options.sanitizeHtml.allowedAttributes,
+      a: ['href', 'name', 'target'],
+      td: ['colspan', 'rowspan'],
+      th: ['colspan', 'rowspan']
+    };
+
     options.browser = Object.assign({}, {
       components: {
         widgetEditor: 'ApostropheRichTextWidgetEditor'
@@ -118,7 +127,6 @@ module.exports = {
             toggleCellMerge: 'Merge Cells',
             toggleHeaderRow: 'Toggle Table Header Row',
             toggleHeaderColumn: 'Toggle Table Header Column'
-
           }
         },
         modal: {

@@ -85,6 +85,6 @@ import TableHeaderColumn from 'vue-material-design-icons/TableArrowDown.vue'
     background-color: #6D38BD;
   }
   .apos-tiptap-editor table .selectedCell {
-    background:rgba(200,200,255,.4);
+    background:rgba(200, 200, 255, .4);
   }
 </style>
