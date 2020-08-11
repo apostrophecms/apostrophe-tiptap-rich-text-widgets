@@ -47,7 +47,7 @@ require('apostrophe')({
   apos.area(data.page, 'areaNameYouWant', {
     widgets: {
       'apostrophe-rich-text': {
-        toolbar: [ 'bold', 'italic', 'link', 'table', 'import' ],
+        toolbar: ['bold', 'italic', 'link', 'table', 'import'],
         styles: [
           {
             tag: 'p',
@@ -146,7 +146,7 @@ See the existing `src/apos/extensions` and `src/apos/components` folders of this
 If you add extensions, you must run this task to rebuild the frontend JavaScript code:
 
 ```
-node app apostrophe-tiptap-widgets:build
+node app apostrophe-rich-text-widgets:build
 ```
 
 This will create the file:
@@ -161,16 +161,27 @@ These are advanced techniques requiring a good understanding of tiptap internals
 
 ## Preserving additional tags and attributes
 
-The default `sanitize-html` configuration of Apostrophe does not save `colspan` and `rowspan` attributes, which the table editor of this module can produce. You will want to use a configuration like this. Note that since we are touching `allowedAttributes`, we must list *all* of the attributes that we believe should be allowed on any tag, not just the ones for table cells. If you fail to address this, you will lose the `href` attributes of your links.
+There is a default `sanitize-html` configuration in this package to save `colspan` and `rowspan` attributes, which the table editor of this module can produce.
 
 ```javascript
+sanitizeHtml: {
+  allowedAttributes: {
+    a: ['href', 'name', 'target'],
+    td: ['colspan', 'rowspan'],
+    th: ['colspan', 'rowspan']
+  }
+}
+```
+
+You can add your own configuration. It will be merged with the default one. For instance:
+```javascript
+// in app.js
 modules: {
   'apostrophe-rich-text-widgets': {
     sanitizeHtml: {
+      allowedTags: ['b', 'i', 'em', 'strong', 'a', 'img'],
       allowedAttributes: {
-        a: [ 'href', 'name', 'target' ],
-        td: [ 'colspan', 'rowspan' ],
-        th: [ 'colspan', 'rowspan' ]
+        img: ['src']
       }
     }
   }
@@ -203,10 +214,10 @@ In a template you may now use the two side by side:
 apos.area(data.page, 'body', {
   widgets: {
     'apostrophe-rich-text': {
-      toolbar: [ 'Bold', 'Italic', 'Link' ]
+      toolbar: ['Bold', 'Italic', 'Link']
     },
     'apostrophe-tiptap': {
-      toolbar: [ 'bold', 'italic', 'link', 'table' ]
+      toolbar: ['bold', 'italic', 'link', 'table']
     }
   }
 });
