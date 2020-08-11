@@ -12,9 +12,9 @@ module.exports = {
 
     options.sanitizeHtml.allowedAttributes = {
       ...options.sanitizeHtml.allowedAttributes,
-      a: ['href', 'name', 'target'],
-      td: ['colspan', 'rowspan'],
-      th: ['colspan', 'rowspan']
+      a: ['name', 'target', ...options.sanitizeHtml.allowedAttributes.a || []],
+      td: ['colspan', 'rowspan', ...options.sanitizeHtml.allowedAttributes.td || []],
+      th: ['colspan', 'rowspan', ...options.sanitizeHtml.allowedAttributes.th || []]
     };
 
     options.browser = Object.assign({}, {
