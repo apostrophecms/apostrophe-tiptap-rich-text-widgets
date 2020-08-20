@@ -9,7 +9,7 @@ module.exports = {
 
   beforeConstruct: function(self, options) {
     options.sanitizeHtml = options.sanitizeHtml || {};
-
+    options.sanitizeHtml.allowedAttributes = options.sanitizeHtml.allowedAttributes || {};
     options.sanitizeHtml.allowedAttributes = {
       ...options.sanitizeHtml.allowedAttributes,
       a: ['name', 'target', ...options.sanitizeHtml.allowedAttributes.a || []],
