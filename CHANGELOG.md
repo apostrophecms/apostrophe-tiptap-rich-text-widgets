@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.8 - 2020-08-26
+
+SanitizeHtml configuration is not mandatory on project level anymore.
+
 ## 0.3.7 - 2020-08-12
 
 Table improvements:

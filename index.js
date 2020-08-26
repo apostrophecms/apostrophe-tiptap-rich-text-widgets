@@ -9,13 +9,22 @@ module.exports = {
 
   beforeConstruct: function(self, options) {
     options.sanitizeHtml = options.sanitizeHtml || {};
-
+    options.sanitizeHtml.allowedAttributes = options.sanitizeHtml.allowedAttributes || {};
     options.sanitizeHtml.allowedAttributes = {
       ...options.sanitizeHtml.allowedAttributes,
-      a: ['name', 'target', ...options.sanitizeHtml.allowedAttributes.a || []],
-      td: ['colspan', 'rowspan', ...options.sanitizeHtml.allowedAttributes.td || []],
-      th: ['colspan', 'rowspan', ...options.sanitizeHtml.allowedAttributes.th || []]
+      img: [...new Set(['src'])],
+      a: [...new Set(['name', 'target', 'href', ...options.sanitizeHtml.allowedAttributes.a || []])],
+      td: [...new Set(['colspan', 'rowspan', ...options.sanitizeHtml.allowedAttributes.td || []])],
+      th: [...new Set(['colspan', 'rowspan', ...options.sanitizeHtml.allowedAttributes.th || []])]
     };
+
+    options.sanitizeHtml.allowedTags = options.sanitizeHtml.allowedTags || [];
+    options.sanitizeHtml.allowedTags = [...new Set([
+      ...options.sanitizeHtml.allowedTags,
+      ...['h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul', 'ol',
+        'nl', 'li', 'b', 'i', 'strong', 'em', 'strike', 'abbr', 'code', 'hr', 'br', 'div',
+        'table', 'thead', 'caption', 'tbody', 'tr', 'th', 'td', 'pre', 'iframe']
+    ])];
 
     options.browser = Object.assign({}, {
       components: {
