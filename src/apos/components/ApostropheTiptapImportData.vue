@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import XLSX from 'xlsx';
+import { read, utils } from 'xlsx';
 import FileUpload from 'vue-material-design-icons/FileUpload.vue';
 import ApostropheModal from './ApostropheModal.vue';
 
@@ -77,18 +77,9 @@ export default {
       const reader = new FileReader();
       reader.readAsBinaryString(file.target.files[0]);
       reader.onload = () => {
-        console.log('XLSX', XLSX);
-        console.log('XLSX.read', XLSX.read);
-
-        window.toto = XLSX;
-        window.titi = XLSX.version;
-        const VERSION = XLSX['version'];
-        window.alert(VERSION)
-        
-        const wb = XLSX.read(reader.result, { type:'binary' });
+        const wb = read(reader.result, { type:'binary' });
         const ws = wb.Sheets[wb.SheetNames[0]];
-        this.preview = XLSX.utils.sheet_to_json(ws, { header:1 });
-        console.log('this.preview', this.preview);
+        this.preview = utils.sheet_to_json(ws, { header:1 });
       }
     }
   }
