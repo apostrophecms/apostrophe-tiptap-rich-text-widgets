@@ -40,6 +40,9 @@ import XLSX from 'xlsx';
 import FileUpload from 'vue-material-design-icons/FileUpload.vue';
 import ApostropheModal from './ApostropheModal.vue';
 
+const VERSION = XLSX['version'];
+console.log('XLSX.version', VERSION);
+
 export default {
   name: 'ApostropheTiptapImportData',
   components: { FileUpload, ApostropheModal },
@@ -77,9 +80,13 @@ export default {
       const reader = new FileReader();
       reader.readAsBinaryString(file.target.files[0]);
       reader.onload = () => {
+        console.log('XLSX', XLSX);
+        console.log('XLSX.read', XLSX.read);
+        
         const wb = XLSX.read(reader.result, { type:'binary' });
         const ws = wb.Sheets[wb.SheetNames[0]];
         this.preview = XLSX.utils.sheet_to_json(ws, { header:1 });
+        console.log('this.preview', this.preview);
       }
     }
   }
