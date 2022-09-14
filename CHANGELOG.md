@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.9 - 2022-09-13
+
+* Fix a denial-of-service vulnerability by bumping xlsx package to its latest version.
+
 ## 0.3.8 - 2020-08-26
 
 SanitizeHtml configuration is not mandatory on project level anymore.
