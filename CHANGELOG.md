@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.9 - 2022-09-13
+## UNRELEASED
 
 * Fix a denial-of-service vulnerability by bumping xlsx package to its latest version.
 
